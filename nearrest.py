@@ -7,7 +7,7 @@ import json
 app = Flask(__name__)
 api = Api(app)
 
-with open('combineddata.json') as json_file:
+with open('data\combineddata.json') as json_file:
     data = json.load(json_file)
     
 
