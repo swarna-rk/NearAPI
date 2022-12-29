@@ -4,7 +4,7 @@
 # Endpoint Description
 1. https://near-api-tau.vercel.app/AllProjects   -- returns a list of All Projects 
 
-2. https://near-api-tau.vercel.app/AllProjects/<projectname> - returns details of the specified Project name
+2. https://near-api-tau.vercel.app/AllProjects/$<projectname>$ - returns details of the specified Project name
     examples:
     https://near-api-tau.vercel.app/AllProjects/Near - returns details of the projects with name "Near". One can give full name or partial name
 
