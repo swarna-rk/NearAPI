@@ -7,9 +7,13 @@ import json
 app = Flask(__name__)
 api = Api(app)
 
-with open('data\combineddata.json') as json_file:
+with open('nearprojects.json') as json_file:
     data = json.load(json_file)
     
+@app.route('/')
+def home():
+    return 'Near APIs Endpoints'
+
 
 @app.route('/Series/<name>', methods=['GET'])
 def Series(name):    
@@ -35,7 +39,7 @@ def ProjectName(name):
     return jsonify({'data': df.to_dict('records')})
 
 @app.route('/AllProjects', methods=['GET'])
-def AllProjects():
+def AllProjects():    
     df = pd.DataFrame(data)     
     return jsonify({'data': df.to_dict('records')})
 
@@ -53,5 +57,31 @@ def Grants(providername):
     df = df[df['Grants'].str.contains(providername,na= False)]  
     return jsonify({'data': df.to_dict('records')})
 
-if __name__ == '__main__':
-    app.run()  # run our Flask app
+@app.route('/Category/<categoryname>', methods=['GET'])
+def Category(categoryname):
+    df = pd.DataFrame(data)
+    categoryname = categoryname.upper()
+    df['Category'] = df['Category'].str.upper()
+    df = df[df['Category'].str.contains(categoryname,na= False)]  
+    return jsonify({'data': df.to_dict('records')})
+
+@app.route('/AllProjects/Links/<projectname>', methods=['GET'])
+def GetAllLinks(projectname):
+    df = pd.DataFrame(data)
+    projectname = projectname.upper()
+    df['ProjectName'] = df['ProjectName'].str.upper()
+    df = df[df['ProjectName'].str.contains(projectname,na= False)]  
+    filtered_df = df[['ProjectName','Website Link','Buy Link','Stake Link','DApp Link','Facebook','Twitter','Github','Telegram','Discord','Linkedin','Medium','Other Links']]
+    return jsonify({'data': filtered_df.to_dict('records')})
+
+@app.route('/AllProjects/Tokens/<projectname>', methods=['GET'])
+def GetTokenDetails(projectname):
+    df = pd.DataFrame(data)
+    projectname = projectname.upper()
+    df['ProjectName'] = df['ProjectName'].str.upper()
+    token_df = df[df['ProjectName'].str.contains(projectname,na= False)]  
+    filtered_token_df = token_df[['ProjectName','Near Token','Aurora Token','Ethereum Token','Other Tokens']]
+    return jsonify({'data': filtered_token_df.to_dict('records')})
+
+# # if __name__ == '__main__':
+# #     app.run()  # run our Flask app
