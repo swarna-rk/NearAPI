@@ -1,13 +1,14 @@
-from flask import Flask,jsonify
+from flask import Flask,jsonify,request
 from flask_restful import Resource, Api, reqparse
 import pandas as pd
 import ast
 import json
+from requests import post
 
 app = Flask(__name__)
 api = Api(app)
 
-with open('nearprojects.json') as json_file:
+with open('nearprojects1.json') as json_file:
     data = json.load(json_file)
     
 @app.route('/')
@@ -82,6 +83,15 @@ def GetTokenDetails(projectname):
     token_df = df[df['ProjectName'].str.contains(projectname,na= False)]  
     filtered_token_df = token_df[['ProjectName','Near Token','Aurora Token','Ethereum Token','Other Tokens']]
     return jsonify({'data': filtered_token_df.to_dict('records')})
+
+@app.route('/AllProjects/Create',methods = ['POST'])
+def CreateProject(): 
+    df = pd.DataFrame(data) 
+    df_json = df.append(request.get_json(),ignore_index = True)    
+    with open('nearprojects1.json', 'w') as f:        
+        json.dump(df_json.to_dict('records'),f)
+    return "Success"
+
 
 # # if __name__ == '__main__':
 # #     app.run()  # run our Flask app
