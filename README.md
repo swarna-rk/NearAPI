@@ -44,6 +44,7 @@
      https://near-api-tau.vercel.app/AllProjects/Tokens/Near - returns all token urls of all projects with "Near" in its name    
      
  10. https://near-api-tau.vercel.app/Projects/Create - Creates a new entry in NearProjects JSON file. This method should be invoked while submitting new project details
+ 
  URL : https://near-api-tau.vercel.app/Projects/Create
  Sample input : {
 	"ProjectName": "ABCD",
