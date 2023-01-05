@@ -46,6 +46,7 @@
  10. https://near-api-tau.vercel.app/Projects/Create - Creates a new entry in NearProjects JSON file. This method should be invoked while submitting new project details
  
  URL : https://near-api-tau.vercel.app/Projects/Create
+ 
  Sample input : {
 	"ProjectName": "ABCD",
 	"Category": null,
@@ -78,5 +79,6 @@
 	"Notes": "PrevFundraising:xyza|CurrentFundraising:ABCD|TobeContacted:ABCD|Integrated_WS:ABCD|Email:ABCD|ContactEmail:ABCD",
 	"Date_Created": "ABCD"
 }
+
 Output : Success
 
