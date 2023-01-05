@@ -42,4 +42,40 @@
     examples:
     https://near-api-tau.vercel.app/AllProjects/Tokens/Loozr - returns all token urls of the project named "Loozr"
      https://near-api-tau.vercel.app/AllProjects/Tokens/Near - returns all token urls of all projects with "Near" in its name    
+     
+ 10. https://near-api-tau.vercel.app/Projects/Create - Creates a new entry in NearProjects JSON file. This method should be invoked while submitting new project details
+ URL : https://near-api-tau.vercel.app/Projects/Create
+ Sample input : {
+	"ProjectName": "ABCD",
+	"Category": null,
+	"Subtitle": null,
+	"AwesomeNearLink": null,
+	"Series": null,
+	"ABBV": null,
+	"Icon": "ABCD",
+	"Website Link": "ABCD",
+	"Buy Link": null,
+	"Stake Link": null,
+	"DApp Link": "ABCD",
+	"Facebook": "ABCD",
+	"Twitter": "ABCD",
+	"Github": "ABCD",
+	"Telegram": "ABCD",
+	"Discord": "ABCD",
+	"Linkedin": null,
+	"Medium": "ABCD",
+	"Other Links": null,
+	"Near Token": null,
+	"Aurora Token": null,
+	"Ethereum Token": null,
+	"Other Tokens": "ABCD",
+	"Description": "ABCD",
+	"Grants": null,
+	"News Articles": null,
+	"WalletSelector_Comments1": null,
+	"WalletSelector_Comments2": null,
+	"Notes": "PrevFundraising:xyza|CurrentFundraising:ABCD|TobeContacted:ABCD|Integrated_WS:ABCD|Email:ABCD|ContactEmail:ABCD",
+	"Date_Created": "ABCD"
+}
+Output : Success
 
